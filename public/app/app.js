@@ -1,1 +1,0 @@
-var app = angular.module('my-app',[]).constant('API','http://tutheblue.com/angularjs_laravel/');
