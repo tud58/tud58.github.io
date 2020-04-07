@@ -41,7 +41,7 @@ body{
      position: relative;
  }
  .scoreBar{
-     width: 50%;
+     width: 95%;
      float:right;
      background: #fff;
      color: #111;
@@ -49,6 +49,10 @@ body{
      padding:10px;
      position: relative;
      margin-top:10px;
+ }
+ .scoreBar .score {
+	 width: 50%;
+	 margin-left: 25%;
  }
 .scoreBar:before{
     content: "";
@@ -65,27 +69,38 @@ body{
      font-size: 50px;
  }
  
- #addScore{
+ #addScore {
      position: absolute;
      bottom: 0px;
      font-size: 30px;
      color:#999;
      opacity: .8;
-     top:4px;
+     top:20px;
      right: 0;
+	 width: 25%;
  }
-#addScore.show{
+ #showKey{
+     position: absolute;
+     bottom: 0px;
+     font-size: 20px;
+     color:#999;
+     opacity: .8;
+     top:30px;
+     left: 0;
+	 width: 25%;
+ }
+#addScore.show, #showKey.show{
     opacity: .8;
     transition:all .5s ease;   -ms-transition:all .5s ease; -moz-transition:all .5s ease; -o-transition:all .5s ease; -webkit-transition:all .5s ease; 
 
 }
-#addScore.hide{
+#addScore.hide, #showKey.hide{
     opacity: 0;
     transition:all .5s ease;   -ms-transition:all .5s ease; -moz-transition:all .5s ease; -o-transition:all .5s ease; -webkit-transition:all .5s ease; 
 }
 
 #stage{
-    background: #01bfae;
+    background: #727272;
     cursor: pointer;
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -98,11 +113,6 @@ body{
     margin-top: -200px;
     border: 1px solid #eee;
     z-index: 1;
-}
-
-#undo{
-    position: relative;
-    z-index: 990;
 }
 
 .cover{

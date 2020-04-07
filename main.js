@@ -17,8 +17,8 @@ var gameObj = {
         }
 
     },
-    
-        empty: function () {
+	// Lấy các ô rỗng
+    empty: function () {
         var emptyList = [];
         for (var row = 0; row < 4; row++) {
             for (var cell = 0; cell < 4; cell++) {
@@ -29,11 +29,12 @@ var gameObj = {
         }
         return emptyList;
     },
+	// Tạo 1 ô mới
     newBox: function () {
         var _this = this;
         
-        
         var box = function (obj) {
+			// Random 2 hoặc 4
             var num = Math.random() > 0.9 ? 4 : 2;
             this.value = num;
             this.parent = obj;
@@ -98,6 +99,7 @@ var gameObj = {
         var scoreBar= document.getElementById('score');
         scoreBar.innerText=this.points.score;
         scoreBar.textContent=this.points.score;
+		
         return obj2.boxObj.value;
 
 
@@ -129,7 +131,6 @@ var gameObj = {
       }
         return can;
     },
-    
     move: function (x,y) {
         var can=0;
         can=this.clear(x,y)?1:0;
@@ -232,7 +233,7 @@ function disableSelection(target){
 window.onload = function () {
     gameObj.intiStage();
     gameObj.newBox();
-//    gameObj.newBox();
+	
     var stage = document.getElementById('stage');
     document.onmousedown = function (e) {
         var event = e || window.event;
@@ -260,13 +261,16 @@ window.onload = function () {
         currKey=e.keyCode||e.which||e.charCode;
         var keyName = String.fromCharCode(currKey);
         switch (currKey){
-            case 37:gameObj.move(0, 0);break;
-            case 38:gameObj.move(1, 0);break;
-            case 39:gameObj.move(0, 1);break;
-            case 40:gameObj.move(1, 1);break;
+            case 37:gameObj.move(0, 0); var key = 'LEFT';break;  // LEFT
+            case 38:gameObj.move(1, 0); var key = 'UP';break; // UP
+            case 39:gameObj.move(0, 1); var key = 'RIGHT';break; // RIGHT
+            case 40:gameObj.move(1, 1); var key = 'DOWN';break; // DOWN
         }
-//        alert("key code: " + currKey + " Character: " + keyName);
+		
+		var showKey=document.getElementById('showKey');
+            showKey.innerText=key;
+            showKey.textContent=key;
+            showKey.className="show";
     }
     document.onkeyup = keyUp;
-//    disableSelection(document.body);
 }
