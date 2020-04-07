@@ -34,7 +34,7 @@ var gameObj = {
         var _this = this;
         
         var box = function (obj) {
-			// Random 2 hoặc 4
+			// Random 2 hoặc 4 ( xác suất bằng 2 nhiều hơn)
             var num = Math.random() > 0.9 ? 4 : 2;
             this.value = num;
             this.parent = obj;
@@ -56,6 +56,7 @@ var gameObj = {
             return true;
         }
     },
+	// Check Game Over
     isEnd:function(){
         var emptyList = this.empty();
         if (!emptyList.length) {
@@ -81,12 +82,13 @@ var gameObj = {
     gameOver:function(){
         alert('GAVE OVER!');
     },
+	// Gộp 2 ô
     moveTo :function (obj1, obj2) {
             obj2.boxObj = obj1.boxObj;
             obj2.boxObj.domObj.className = 'row' + obj2.position[0] + ' ' + 'cell' + obj2.position[1] + ' ' + 'num' + obj2.boxObj.value;
-//            obj1.boxObj.domObj.parentNode.removeChild(obj1.boxObj.domObj);
             obj1.boxObj = null;
         },
+	// Cộng 2 ô
     addTo : function (obj1, obj2) {
             obj2.boxObj.domObj.parentNode.removeChild(obj2.boxObj.domObj);
             obj2.boxObj = obj1.boxObj;
@@ -161,12 +163,11 @@ var gameObj = {
                 if(objInThisWay2.boxObj&&objInThisWay.boxObj.value==objInThisWay2.boxObj.value){
                   add+=this.addTo(objInThisWay2,objInThisWay);
                     this.clear(x,y);
-//                    j++;
                     can=1;
                 }
-//                console.log(this.stage);
             }
         }
+		// Nhảy điểm
         if(add){
             var addscore=document.getElementById('addScore');
             addscore.innerText="+"+add;
@@ -176,9 +177,11 @@ var gameObj = {
                 addscore.className="hide";
             },500);
         }
+		// Sinh ô mới
         if(can){
             this.newBox();
         }
+		// Game over
         if(this.isEnd()){
             this.gameOver();
         }
