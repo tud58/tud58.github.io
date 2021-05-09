@@ -7335,6 +7335,12 @@ Created using IcoMoon - icomoon.io
 .cc-reference img {
     height: 120px;
     width: auto;
+    margin: auto;
+    display: block;
+}
+
+.cc-reference-header {
+    text-align: center;
 }
 
 .cc-reference .h5 {
